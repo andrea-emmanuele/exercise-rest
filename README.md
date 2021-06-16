@@ -1,7 +1,7 @@
 # exercise-rest
 ## Clone the repository
 ```
-git clone https://github.com/andrea-emmanuele/exercise-rest-new.git
+git clone https://github.com/andrea-emmanuele/exercise-rest.git
 ```
 ## Project setup
 ```
