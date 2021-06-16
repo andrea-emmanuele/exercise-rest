@@ -17,14 +17,14 @@ export default {
       apiKey: "syaNs11gHB9pev48g5Zrt5p5O4cKX7yU1bUDj7F5", // Storing api key for making requests to the server
       job: {
         name: 'test',
-        status: 'Success'
+        status: 'Initializing'
       },
       request: "",
       attempts: 0,
     };
   },
   mounted() {
-    /*this.requests();*/
+    this.requests();
   },
   methods: {
     getStatus() {
@@ -42,7 +42,7 @@ export default {
         });
     },
     checkStatus() {
-      if (this.job.status === "Pending" || this.job.status === "") this.getStatus();
+      if (this.job.status !== "Success") this.getStatus();
       else clearInterval(this.request);
     },
     checkAttempts(max) {
