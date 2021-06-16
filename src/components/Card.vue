@@ -9,7 +9,7 @@
     <div class="content">
       <div class="item">
         <div class="item-name">{{ job.name }}</div>
-        <div class="item-status">{{ job.status }}</div>
+        <div :class="isSuccess" class="item-status">{{ job.status }}</div>
       </div>
     </div>
   </div>
@@ -18,7 +18,14 @@
 <script>
 export default {
   name: "Card",
-  props: ['heading', 'job']
+  props: ["heading", "job"],
+  computed: {
+    isSuccess() {
+      return {
+        success: this.job.status === "Success"
+      }
+    }
+  }
 };
 </script>
 
@@ -50,6 +57,23 @@ export default {
           .item-status {
           text-align: center;
           width: 100px;
+        }
+
+        > .item-status {
+          &.success {
+            font-weight: bold;
+            color: $success-color;
+            animation: growUp 200ms ease-in-out;
+
+            @keyframes growUp {
+              from {
+                transform: scale(1);
+              }
+              to {
+                transform: scale(1.2);
+              }
+            }
+          }
         }
       }
     }

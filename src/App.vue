@@ -17,7 +17,7 @@ export default {
       apiKey: "syaNs11gHB9pev48g5Zrt5p5O4cKX7yU1bUDj7F5", // Storing api key for making requests to the server
       job: {
         name: 'test',
-        status: 'Initializing'
+        status: 'Success'
       },
       request: "",
       attempts: 0,
