@@ -1,5 +1,8 @@
-# exercise-rest-new
-
+# exercise-rest
+## Clone the repository
+```
+git clone https://github.com/andrea-emmanuele/exercise-rest-new.git
+```
 ## Project setup
 ```
 npm install
