@@ -8,10 +8,10 @@ export default {
   components: {},
   data() {
     return {
-      endpoint:
-        "https://c5ljdx2w0m.execute-api.eu-central-1.amazonaws.com/recruitment/",
+      endpoint: "https://c5ljdx2w0m.execute-api.eu-central-1.amazonaws.com/recruitment/",
       apiKey: "syaNs11gHB9pev48g5Zrt5p5O4cKX7yU1bUDj7F5", // Storing api key for making requests to the server
       status: "",
+      request: "",
     };
   },
   mounted() {
@@ -30,6 +30,11 @@ export default {
           console.error("An error occurred:", error);
         });
     },
+    requests() {
+      this.request = setInterval(() => {
+        this.getStatus();
+      }, 5000);
+    }
   },
 };
 </script>
