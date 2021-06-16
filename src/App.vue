@@ -12,6 +12,7 @@ export default {
       apiKey: "syaNs11gHB9pev48g5Zrt5p5O4cKX7yU1bUDj7F5", // Storing api key for making requests to the server
       status: "",
       request: "",
+      attempts: 0,
     };
   },
   mounted() {
@@ -28,11 +29,16 @@ export default {
         })
         .catch((error) => {
           console.error("An error occurred:", error);
+          this.attempts++;
         });
+    },
+    checkAttempts(max) {
+      if (this.attempts < max) this.getStatus();
+      else clearInterval(this.request);
     },
     requests() {
       this.request = setInterval(() => {
-        this.getStatus();
+        this.checkAttempts(5);
       }, 5000);
     }
   },
