@@ -32,15 +32,19 @@ export default {
           this.attempts++;
         });
     },
+    checkStatus() {
+      if (this.status === "Pending") this.checkStatus();
+      else clearInterval(this.request);
+    },
     checkAttempts(max) {
-      if (this.attempts < max) this.getStatus();
+      if (this.attempts < max) this.checkStatus();
       else clearInterval(this.request);
     },
     requests() {
       this.request = setInterval(() => {
         this.checkAttempts(5);
       }, 5000);
-    }
+    },
   },
 };
 </script>
