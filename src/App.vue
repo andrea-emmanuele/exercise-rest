@@ -1,5 +1,5 @@
 <template>
-  <Card />
+  <Card heading="Running Jobs"/>
   <div>{{ status }}</div>
 </template>
 
