@@ -16,7 +16,7 @@ export default {
     };
   },
   mounted() {
-    this.getStatus();
+    /*this.requests();*/
   },
   methods: {
     getStatus() {
@@ -26,6 +26,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           this.status = data.status;
+          console.log(data);
         })
         .catch((error) => {
           console.error("An error occurred:", error);
@@ -33,7 +34,7 @@ export default {
         });
     },
     checkStatus() {
-      if (this.status === "Pending") this.checkStatus();
+      if (this.status === "Pending" || this.status === "") this.getStatus();
       else clearInterval(this.request);
     },
     checkAttempts(max) {
@@ -50,12 +51,16 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  background: $primary_color;
+
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 }
 </style>
