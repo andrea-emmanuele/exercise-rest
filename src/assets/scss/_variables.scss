@@ -1,7 +1,15 @@
 $primary_color: #edf2f9;
 $secondary_color: #fff;
+$ternary_color: #f9fafd;
+$success_color: #327e0a;
 
 /*region backgrounds*/
 $main_bg: $primary_color;
 $card_bg: $secondary-color;
+$card_header_bg: $ternary-color;
+/*endregion*/
+
+/*region spacings*/
+$card_inner_py: 1rem;
+$card_inner_px: 2rem;
 /*endregion*/

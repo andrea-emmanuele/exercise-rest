@@ -2,18 +2,23 @@
   <div class="card">
     <div class="header">
       <div class="inner-header">
-        <h3>{{ heading }}</h3>
+        <h4>Running Jobs</h4>
+        <h4>Current Status</h4>
       </div>
     </div>
-    <div class="content"></div>
-    <div class="pie"></div>
+    <div class="content">
+      <div class="item">
+        <div class="item-name">{{ job.name }}</div>
+        <div class="item-status">{{ job.status }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Card",
-  props: ['heading', 'status']
+  props: ['heading', 'job']
 };
 </script>
 
@@ -23,12 +28,29 @@ export default {
     height: 100px;
     background: $card_bg;
     border-radius: 0.5rem;
+    overflow: hidden;
     margin: 0 auto;
     box-shadow: 0 7px 14px 0 rgba(65,69,88,.1),0 3px 6px 0 rgba(0,0,0,.07);
 
     > .header {
+      background: $card_header_bg;
       > .inner-header {
-        padding: 1rem 2rem;
+        padding: $card_inner_py $card_inner_px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    > .content {
+      padding: $card_inner_py $card_inner_px;
+      > .item {
+        display: flex;
+        justify-content: space-between;
+
+        > .item-name,
+          .item-status {
+          text-align: center;
+          width: 100px;
+        }
       }
     }
   }

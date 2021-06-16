@@ -1,5 +1,5 @@
 <template>
-  <Card heading="Running Jobs"/>
+  <Card :job="this.job"/>
   <div>{{ status }}</div>
 </template>
 
@@ -15,7 +15,10 @@ export default {
     return {
       endpoint: "https://c5ljdx2w0m.execute-api.eu-central-1.amazonaws.com/recruitment/",
       apiKey: "syaNs11gHB9pev48g5Zrt5p5O4cKX7yU1bUDj7F5", // Storing api key for making requests to the server
-      status: "",
+      job: {
+        name: 'test',
+        status: 'Initializing'
+      },
       request: "",
       attempts: 0,
     };
@@ -30,7 +33,7 @@ export default {
       })
         .then((response) => response.json())
         .then((data) => {
-          this.status = data.status;
+          this.job.status = data.status;
           console.log(data);
         })
         .catch((error) => {
@@ -39,7 +42,7 @@ export default {
         });
     },
     checkStatus() {
-      if (this.status === "Pending" || this.status === "") this.getStatus();
+      if (this.job.status === "Pending" || this.job.status === "") this.getStatus();
       else clearInterval(this.request);
     },
     checkAttempts(max) {
@@ -56,6 +59,12 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: $main_bg;
 
@@ -63,7 +72,6 @@ body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
     margin-top: 60px;
   }
