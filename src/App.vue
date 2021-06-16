@@ -1,11 +1,16 @@
 <template>
+  <Card />
   <div>{{ status }}</div>
 </template>
 
 <script>
+import Card from "@/components/Card";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    Card,
+  },
   data() {
     return {
       endpoint: "https://c5ljdx2w0m.execute-api.eu-central-1.amazonaws.com/recruitment/",
@@ -52,7 +57,7 @@ export default {
 
 <style lang="scss">
 body {
-  background: $primary_color;
+  background: $main_bg;
 
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
