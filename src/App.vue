@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>{{ status }}</div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  components: {},
+  data() {
+    return {
+      endpoint:
+        "https://c5ljdx2w0m.execute-api.eu-central-1.amazonaws.com/recruitment/",
+      apiKey: "syaNs11gHB9pev48g5Zrt5p5O4cKX7yU1bUDj7F5", // Storing api key for making requests to the server
+      status: "",
+    };
+  },
+  mounted() {
+    this.getStatus();
+  },
+  methods: {
+    getStatus() {
+      fetch(this.endpoint, {
+        headers: { "x-api-key": this.apiKey },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.status = data.status;
+        })
+        .catch((error) => {
+          console.error("An error occurred:", error);
+        });
+    },
   },
 };
 </script>
